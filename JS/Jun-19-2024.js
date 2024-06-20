@@ -136,5 +136,38 @@ console.log(firstNode.getNextNode())
 module.exports = Node;
 
 //-----------------------------------------------------------------------------------------------------------------------------------//
-// Learning Nodes using module.exports = Node Methods: Get Next Node
+// Learning Nodes using module.exports = Node Methods: Traversing Nodes
 //-----------------------------------------------------------------------------------------------------------------------------------//
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+
+  setNextNode(node) {
+    if (node instanceof Node || node === null) {
+      this.next = node;
+    } else {
+      throw new Error('Next node must be a member of the Node class.');
+    }
+  }
+
+  getNextNode() {
+    return this.next;
+  }
+}
+
+const strawberryNode = new Node('Berry Tasty');
+const vanillaNode = new Node('Vanilla');
+const coconutNode = new Node('Coconuts for Coconut');
+
+vanillaNode.setNextNode(strawberryNode);
+strawberryNode.setNextNode(coconutNode);
+
+let currentNode = vanillaNode                             // currentNode will take vanillaNode initially
+while (currentNode){                                      // while current node is not Null, keep on displaying currentNode data
+  console.log(currentNode.data)
+  currentNode = currentNode.getNextNode()                 // get the next node and be stored to current node
+}
+
+module.exports = Node;
