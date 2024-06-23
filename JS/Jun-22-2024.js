@@ -43,10 +43,10 @@
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Sort using stock knowledge -- descending to ascending
 //-----------------------------------------------------------------------------------------------------------------------------------//
-// let myArray = [7, 21, 33, 12, 55, 14, 23, 11, 0, 6, 99];
+let myArray = [7, 21, 33, 12, 55, 14, 23, 11, 0, 6, 99];
 
-// myArray = myArray.sort();
-// console.log(myArray)
+myArray = myArray.sort();
+console.log(myArray)
 
 function sortArr(myArray) {
     for (let i =  myArray.length -1; i >= 0; i --){
