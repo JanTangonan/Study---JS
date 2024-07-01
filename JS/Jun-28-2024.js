@@ -94,6 +94,36 @@ class DoublyLinkedList {
     return removedTail.data
   }
 
+  removeByData(data) {
+    let nodeToRemove;
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      if (currentNode.data === data) {
+        nodeToRemove = currentNode;
+        break;
+      }
+      currentNode = currentNode.getNextNode();
+    }
+    if (!nodeToRemove) {
+      return null;
+    }
+    // Continue your .removeByData() method below:
+   if (nodeToRemove === this.head) {
+      this.removeHead();
+   }
+   else if (nodeToRemove === this.tail) {
+      this.removeTail();
+   }
+   else {
+    const nextNode = nodeToRemove.getNextNode();
+    const previousNode = nodeToRemove.getPreviousNode();
+
+    nextNode.setPreviousNode(previousNode);
+    previousNode.setNextNode(nextNode);
+   }
+   return nodeToRemove;
+  }
+
   printList() {
     let currentNode = this.head;
     let output = '<head> ';
@@ -105,5 +135,21 @@ class DoublyLinkedList {
     console.log(output);
   }
 }
+
+const subway = new DoublyLinkedList();
+
+subway.addToHead('TimesSquare');
+subway.addToHead('GrandCentral');
+subway.addToHead('CentralPark');
+
+subway.addToTail('PennStation');
+subway.addToTail('WallStreet');
+subway.addToTail('BrooklynBridge');
+
+subway.removeHead();
+subway.removeTail();
+
+subway.removeByData('TimesSquare');
+subway.printList();
 
 module.exports = DoublyLinkedList;
